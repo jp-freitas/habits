@@ -44,6 +44,7 @@ export function Home() {
               .from({ length: amountOfDaysToFill })
               .map((_, index) => (
                 <View
+                  key={index}
                   className="opacity-40 bg-zinc-900 rounded-lg border-2 m-1 border-zinc-800"
                   style={{ width: DAY_SIZE, height: DAY_SIZE }}
                 />
