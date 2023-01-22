@@ -18,7 +18,7 @@ const availableWeekDays = [
 ]
 
 export function NewHabit() {
-  const [habit, setHabit] = useState('')
+  const [title, setTitle] = useState('')
   const [weekDays, setWeekDays] = useState<number[]>([])
 
   function handleToggleWeekDay(weekDayIndex: number) {
@@ -31,12 +31,11 @@ export function NewHabit() {
 
   async function handleCreateNewHabit() {
     try {
-      if (!habit.trim() || weekDays.length === 0) {
-        Alert.alert('Novo Hábito', 'Informe o nome do hábito e escolha a periodicidade')
-        return
+      if (!title.trim() || weekDays.length === 0) {
+        return Alert.alert('Novo Hábito', 'Informe o nome do hábito e escolha a periodicidade')
       }
-      await api.post('/habits', { habit, weekDays })
-      setHabit('')
+      await api.post('/habits', { title, weekDays })
+      setTitle('')
       setWeekDays([])
       Alert.alert('Novo Hábito', 'Hábito criado com sucesso!')
     } catch (error) {
@@ -54,8 +53,8 @@ export function NewHabit() {
           className="h-12 pl-4 rounded-lg mt-3 bg-zinc-900 border-2 text-white focus:border-2 border-zinc-800 focus:border-green-600"
           placeholder="Exercícios, dormir bem, etc..."
           placeholderTextColor={colors.zinc[400]}
-          onChangeText={setHabit}
-          value={habit}
+          onChangeText={setTitle}
+          value={title}
         />
         <Text className="font-semibold mt-4 mb-3 text-white text-base">Qual a recorrência?</Text>
         {

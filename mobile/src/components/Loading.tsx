@@ -8,6 +8,7 @@ export function Loading() {
         justifyContent: 'center',
         alignItems: 'center',
       }}
+      className='bg-background'
     >
       <ActivityIndicator color="#7c3aed" />
     </View>
